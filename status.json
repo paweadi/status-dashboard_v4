@@ -53,8 +53,8 @@
         },
         {
             "name": "CucumberStudio",
-            "status": "Unknown",
-            "description": "SSL error: cannot fetch status"
+            "status": "Operational",
+            "description": "All systems operational"
         },
         {
             "name": "Fivetran",
