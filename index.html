@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Status Dashboard – Markel Services</title>
 <style>
-  body { background:#0f172a; color:#e2e8f0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif; margin:0; }
+  body { background:#0f172a; color:#e2e8f0; font-family: system-ui, sans-serif; margin:0; }
   .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
   h1 { font-size: 1.6rem; margin: 0 0 .25rem 0; }
   .meta { color:#94a3b8; margin-bottom: 1rem; }
@@ -14,10 +14,10 @@
   th { text-align:left; color:#93c5fd; background:#0b1220; position: sticky; top:0; }
   tr:last-child td { border-bottom:none; }
   .badge { display:inline-block; padding:.2rem .6rem; border-radius:999px; font-size:.85rem; font-weight:600; }
-  .Operational { background:#16a34a; color:#ffffff; }
+  .Operational { background:#16a34a; color:#ffffff; } /* Green for operational */
   .Minor { background:#b45309; color:#fff7ed; }
   .Major, .Critical { background:#b91c1c; color:#fee2e2; }
-  .Unknown { background:#64748b; color:#e2e8f0; }
+  .Unknown { background:#475569; color:#e2e8f0; }
   a { color:#93c5fd; text-decoration:none; word-break: break-all; }
   a:hover { text-decoration:underline; }
   .error { color:#fca5a5; font-size:.9rem; }
@@ -26,9 +26,7 @@
 <body>
   <div class="container">
     <h1>Markel Services</h1>
-    <div class="meta">
-      Auto-refresh: <span id="refresh-interval">60s</span> • Last updated: <span id="last-updated">—</span>
-    </div>
+    <div class="meta">Auto-refresh: <span id="refresh-interval">60s</span> • Last updated: <span id="last-updated">—</span></div>
 
     <table aria-label="Service status">
       <thead>
@@ -40,114 +38,44 @@
         </tr>
       </thead>
       <tbody>
-        <tr id="Azure">
-          <td>Azure</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">Azure Status</td>
-          <td><a href="https://azure.status.microsoft/en-us/status" target="_blank" rel="noopener">Azure</a></td>
-        </tr>
-        <tr id="Azure_DevOps">
-          <td>Azure DevOps</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">Everything is looking good</td>
-          <td><a href="https://status.dev.azure.com/" target="_blank" rel="noopener">Azure DevOps</a></td>
-        </tr>
-        <tr id="Azure_Databricks">
-          <td>Azure Databricks</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://status.azuredatabricks.net/" target="_blank" rel="noopener">Azure Databricks</a></td>
-        </tr>
-        <tr id="JFrog">
-          <td>JFrog</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://status.jfrog.io/" target="_blank" rel="noopener">JFrog</a></td>
-        </tr>
-        <tr id="Elastic">
-          <td>Elastic</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://status.elastic.co/" target="_blank" rel="noopener">Elastic</a></td>
-        </tr>
-        <tr id="Octopus_Deploy">
-          <td>Octopus Deploy</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://status.octopus.com/" target="_blank" rel="noopener">Octopus Deploy</a></td>
-        </tr>
-        <tr id="Lucid">
-          <td>Lucid</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://status.lucid.co/" target="_blank" rel="noopener">Lucid</a></td>
-        </tr>
-        <tr id="Jira">
-          <td>Jira</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://jira-software.status.atlassian.com/" target="_blank" rel="noopener">Jira</a></td>
-        </tr>
-        <tr id="Confluence">
-          <td>Confluence</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://confluence.status.atlassian.com/" target="_blank" rel="noopener">Confluence</a></td>
-        </tr>
-        <tr id="GitHub">
-          <td>GitHub</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://www.githubstatus.com/" target="_blank" rel="noopener">GitHub</a></td>
-        </tr>
-        <tr id="CucumberStudio">
-          <td>CucumberStudio</td>
-          <td class="status"><span class="badge Unknown">Unknown</span></td>
-          <td class="description">SSL error: cannot fetch status</td>
-          <td><a href="https://status.cucumberstudio.com/" target="_blank" rel="noopener">CucumberStudio</a></td>
-        </tr>
-        <tr id="Fivetran">
-          <td>Fivetran</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://status.fivetran.com/" target="_blank" rel="noopener">Fivetran</a></td>
-        </tr>
-        <tr id="Brainboard">
-          <td>Brainboard</td>
-          <td class="status"><span class="badge Minor">Minor</span></td>
-          <td class="description">Maintenance</td>
-          <td><a href="https://status.brainboard.co/" target="_blank" rel="noopener">Brainboard</a></td>
-        </tr>
-        <tr id="Port">
-          <td>Port</td>
-          <td class="status"><span class="badge Operational">Operational</span></td>
-          <td class="description">All systems operational</td>
-          <td><a href="https://status.port.io/" target="_blank" rel="noopener">Port</a></td>
-        </tr>
+        <tr id="Azure"><td>Azure</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">Azure Status</td><td><a href="https://azure.status.microsoft/en-us/status" target="_blank">Azure</a></td></tr>
+        <tr id="Azure_DevOps"><td>Azure DevOps</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">Everything is looking good</td><td><a href="https://status.dev.azure.com/" target="_blank">Azure DevOps</a></td></tr>
+        <tr id="Azure_Databricks"><td>Azure Databricks</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://status.azuredatabricks.net/" target="_blank">Azure Databricks</a></td></tr>
+        <tr id="JFrog"><td>JFrog</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://status.jfrog.io/" target="_blank">JFrog</a></td></tr>
+        <tr id="Elastic"><td>Elastic</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://status.elastic.co/" target="_blank">Elastic</a></td></tr>
+        <tr id="Octopus_Deploy"><td>Octopus Deploy</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://status.octopus.com/" target="_blank">Octopus Deploy</a></td></tr>
+        <tr id="Lucid"><td>Lucid</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://status.lucid.co/" target="_blank">Lucid</a></td></tr>
+        <tr id="Jira"><td>Jira</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://jira-software.status.atlassian.com/" target="_blank">Jira</a></td></tr>
+        <tr id="Confluence"><td>Confluence</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://confluence.status.atlassian.com/" target="_blank">Confluence</a></td></tr>
+        <tr id="GitHub"><td>GitHub</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://www.githubstatus.com/" target="_blank">GitHub</a></td></tr>
+        <tr id="CucumberStudio"><td>CucumberStudio</td><td class="status"><span class="badge Unknown">Unknown</span></td><td class="description">Unknown</td><td><a href="https://status.cucumberstudio.com/" target="_blank">CucumberStudio</a></td></tr>
+        <tr id="Fivetran"><td>Fivetran</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://status.fivetran.com/" target="_blank">Fivetran</a></td></tr>
+        <tr id="Brainboard"><td>Brainboard</td><td class="status"><span class="badge Minor">Minor</span></td><td class="description">Maintenance</td><td><a href="https://status.brainboard.co/" target="_blank">Brainboard</a></td></tr>
+        <tr id="Port"><td>Port</td><td class="status"><span class="badge Operational">Operational</span></td><td class="description">All systems operational</td><td><a href="https://status.port.io/" target="_blank">Port</a></td></tr>
       </tbody>
     </table>
-
     <p id="error" class="error" style="display:none;"></p>
   </div>
 
 <script>
-const REFRESH_MS = 60000; // 60s
-const STATUS_JSON_URL = () => `status.json?v=${Date.now()}`; // cache-busting
+const STATUS_JSON_URL = 'status.json?v=' + Date.now();
+const REFRESH_MS = 60000;
 
 function formatDate(dt) {
   const pad = (n) => String(n).padStart(2, '0');
   return `${dt.getFullYear()}-${pad(dt.getMonth()+1)}-${pad(dt.getDate())} ${pad(dt.getHours())}:${pad(dt.getMinutes())}:${pad(dt.getSeconds())}`;
 }
+
 function setLastUpdated(now = new Date()) {
-  const el = document.getElementById('last-updated');
-  if (el) el.textContent = formatDate(now);
+  document.getElementById('last-updated').textContent = formatDate(now);
 }
+
 function setError(msg) {
   const el = document.getElementById('error');
-  if (!el) return;
-  el.textContent = msg || '';
+  el.textContent = msg;
   el.style.display = msg ? 'block' : 'none';
 }
+
 function applyStatusToRow(row, statusText, descriptionText) {
   const statusCell = row.querySelector('.status');
   const descCell = row.querySelector('.description');
@@ -160,37 +88,33 @@ function applyStatusToRow(row, statusText, descriptionText) {
       statusCell.innerHTML = '';
       statusCell.appendChild(badge);
     }
-    const normalized = (statusText || 'Unknown').trim();
-    badge.className = 'badge ' + normalized; // color via class
-    badge.textContent = normalized;
+    badge.className = 'badge ' + (statusText || 'Unknown');
+    badge.textContent = statusText || 'Unknown';
   }
 }
+
 async function refreshStatus() {
   setError('');
   try {
-    const resp = await fetch(STATUS_JSON_URL(), { cache: 'no-store' });
+    const resp = await fetch(STATUS_JSON_URL, { cache: 'no-store' });
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const data = await resp.json();
     const items = Array.isArray(data.services) ? data.services : [];
     items.forEach(svc => {
-      const id = (svc.name || '').replace(/\s+/g, '_').replace(/[\\/]/g, '_');
+      const id = (svc.name || '').replace(/\s+/g, '_').replace(/[\/]/g, '_');
       const row = document.getElementById(id);
       if (row) applyStatusToRow(row, svc.status, svc.description);
     });
     setLastUpdated(new Date());
   } catch (err) {
     console.error('Error fetching status:', err);
-    setError('Error fetching status.json. Will retry automatically.');
+    setError('Error fetching status.json. Retrying...');
   }
 }
 
-// Start
 setLastUpdated(new Date());
 refreshStatus();
 setInterval(refreshStatus, REFRESH_MS);
-
-// Optional fallback: hard reload every 10 minutes to bust any remaining cache
-setInterval(() => { location.reload(); }, 10 * 60 * 1000);
 </script>
 </body>
 </html>
