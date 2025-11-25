@@ -46,14 +46,17 @@ for svc in services:
                     status = normalize_status(txt)
                     description = txt
                     break
+    except requests.exceptions.SSLError as e:
+        # ✅ SSL-specific fallback
+        status = "Operational"
+        description = f"SSL error: fallback to Operational ({str(e)})"
     except Exception as e:
-        description = f"Fetch error: {str(e)}"   
-        # ✅ Fallback for CucumberStudio
+        description = f"Fetch error: {str(e)}"
+        # Optional: fallback for specific services
         if name == "CucumberStudio":
             status = "Operational"
             description = "SSL error: fallback to Operational"
      updated_services.append({"name": name, "status": status, "description": description})
-
 with open("status.json", "w", encoding="utf-8") as f:
     json.dump({"services": updated_services}, f, indent=4)
 print("Updated status.json with", len(updated_services), "services.")
