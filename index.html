@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Status Dashboard</title>
-  <meta http-equiv="refresh" content="60">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
+<meta charset="utf-8"/>
+<title>Status Dashboard</title>
+<meta content="60" http-equiv="refresh"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>
     :root{
       --bg:#0b1220; --panel:#111827; --panel-soft:#0f172a;
       --text:#e5e7eb; --muted:#9ca3af; --line:#1f2937;
@@ -53,267 +54,217 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <div class="row">
-        <div>
-          <h1>Markel Services</h1>
-          <div class="meta">Auto-refresh: 60s • Last updated: 2025-11-20 10:57:08</div>
-        </div>
-        <div class="actions">
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <div class="wrap">
-      <div class="card">
-        <table aria-label="Service status table">
-          <thead>
-            <tr>
-              <th style="width:26%;">Service</th>
-              <th style="width:14%;">Status</th>
-              <th>Description</th>
-              <th><th>Source</th></th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            <tr>
-              <td class="name" data-label="Service">Azure</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<header>
+<div class="wrap">
+<div class="row">
+<div>
+<h1>Markel Services</h1>
+<div class="meta">Auto-refresh: 60s • Last updated: 2025-11-20 10:57:08</div>
+</div>
+<div class="actions">
+</div>
+</div>
+</div>
+</header>
+<main>
+<div class="wrap">
+<div class="card">
+<table aria-label="Service status table">
+<thead>
+<tr>
+<th style="width:26%;">Service</th>
+<th style="width:14%;">Status</th>
+<th>Description</th>
+<th><th>Source</th></th>
+</tr>
+</thead>
+<tbody>
+<tr id="Azure">
+<td class="name" data-label="Service">Azure</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 Azure Status
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://azure.status.microsoft/en-us/status" target="_blank" rel="noopener">Azure</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Azure DevOps</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://azure.status.microsoft/en-us/status" rel="noopener" target="_blank">Azure</a>
+</td>
+</td></tr>
+<tr id="Azure_DevOps">
+<td class="name" data-label="Service">Azure DevOps</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 Everything is looking good
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.dev.azure.com/" target="_blank" rel="noopener">Azure DevOps</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Azure Databricks</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://status.dev.azure.com/" rel="noopener" target="_blank">Azure DevOps</a>
+</td>
+</td></tr>
+<tr id="Azure_Databricks">
+<td class="name" data-label="Service">Azure Databricks</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.azuredatabricks.net/" target="_blank" rel="noopener">Azure Databricks</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">JFrog</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://status.azuredatabricks.net/" rel="noopener" target="_blank">Azure Databricks</a>
+</td>
+</td></tr>
+<tr id="JFrog">
+<td class="name" data-label="Service">JFrog</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.jfrog.io/" target="_blank" rel="noopener">JFrog</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Elastic</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://status.jfrog.io/" rel="noopener" target="_blank">JFrog</a>
+</td>
+</td></tr>
+<tr id="Elastic">
+<td class="name" data-label="Service">Elastic</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.elastic.co/" target="_blank" rel="noopener">Elastic</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Octopus Deploy</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://status.elastic.co/" rel="noopener" target="_blank">Elastic</a>
+</td>
+</td></tr>
+<tr id="Octopus_Deploy">
+<td class="name" data-label="Service">Octopus Deploy</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.octopus.com/" target="_blank" rel="noopener">Octopus Deploy</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Lucid</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://status.octopus.com/" rel="noopener" target="_blank">Octopus Deploy</a>
+</td>
+</td></tr>
+<tr id="Lucid">
+<td class="name" data-label="Service">Lucid</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.lucid.co/" target="_blank" rel="noopener">Lucid</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Jira</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://status.lucid.co/" rel="noopener" target="_blank">Lucid</a>
+</td>
+</td></tr>
+<tr id="Jira">
+<td class="name" data-label="Service">Jira</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://jira-software.status.atlassian.com/" target="_blank" rel="noopener">Jira</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Confluence</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://jira-software.status.atlassian.com/" rel="noopener" target="_blank">Jira</a>
+</td>
+</td></tr>
+<tr id="Confluence">
+<td class="name" data-label="Service">Confluence</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://confluence.status.atlassian.com/" target="_blank" rel="noopener">Confluence</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">GitHub</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://confluence.status.atlassian.com/" rel="noopener" target="_blank">Confluence</a>
+</td>
+</td></tr>
+<tr id="GitHub">
+<td class="name" data-label="Service">GitHub</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://www.githubstatus.com/" target="_blank" rel="noopener">GitHub</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">CucumberStudio</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #6b7280;">Unknown</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://www.githubstatus.com/" rel="noopener" target="_blank">GitHub</a>
+</td>
+</td></tr>
+<tr id="CucumberStudio">
+<td class="name" data-label="Service">CucumberStudio</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #6b7280;">Unknown</span>
+</td>
+<td class="desc description" data-label="Description">
                 Unknown
-                <div class="err">Fetch error: Cannot connect to host status.cucumberstudio.com:443 ssl:True [SSLCertVerificationError: (1, &#34;[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for &#39;status.cucumberstudio.com&#39;. (_ssl.c:1032)&#34;)]</div>
-              </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.cucumberstudio.com/" target="_blank" rel="noopener">CucumberStudio</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Fivetran</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+                <div class="err">Fetch error: Cannot connect to host status.cucumberstudio.com:443 ssl:True [SSLCertVerificationError: (1, "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'status.cucumberstudio.com'. (_ssl.c:1032)")]</div>
+</td>
+<td class="small source" data-label="Source">
+<td><a href="https://status.cucumberstudio.com/" rel="noopener" target="_blank">CucumberStudio</a>
+</td>
+</td></tr>
+<tr id="Fivetran">
+<td class="name" data-label="Service">Fivetran</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.fivetran.com/" target="_blank" rel="noopener">Fivetran</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Brainboard</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #f59e0b;">Minor</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://status.fivetran.com/" rel="noopener" target="_blank">Fivetran</a>
+</td>
+</td></tr>
+<tr id="Brainboard">
+<td class="name" data-label="Service">Brainboard</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #f59e0b;">Minor</span>
+</td>
+<td class="desc description" data-label="Description">
                 Maintenance
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.brainboard.co/" target="_blank" rel="noopener">Brainboard</a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td class="name" data-label="Service">Port</td>
-              <td data-label="Status">
-                <span class="badge" style="background: #16a34a;">Operational</span>
-              </td>
-              <td class="desc" data-label="Description">
+<td class="small source" data-label="Source">
+<td><a href="https://status.brainboard.co/" rel="noopener" target="_blank">Brainboard</a>
+</td>
+</td></tr>
+<tr id="Port">
+<td class="name" data-label="Service">Port</td>
+<td class="status" data-label="Status">
+<span class="badge" style="background: #16a34a;">Operational</span>
+</td>
+<td class="desc description" data-label="Description">
                 All systems operational
                 
               </td>
-              <td class="small source" data-label="Source">
-              <td><a href="https://status.port.io/" target="_blank" rel="noopener">Port</a>
-              </td>
-            </tr>
-            
-          </tbody>
-        </table>
-
-        
-      </div>
-    </div>
-  </main>
-
-<script>
-// Auto-refresh every 60 seconds
-setTimeout(() => {
-  location.reload();
-}, 60000);
-
-// Dynamic fetch and update (using placeholder JSON)
-async function refreshStatus() {
-  try {
-    const response = await fetch('status.json'); // Replace with actual API or JSON file
-    const data = await response.json();
-
-    data.services.forEach(service => {
-      const row = document.querySelector(`#${service.name}`);
-      if (row) {
-        const statusCell = row.querySelector('.status');
-        const descCell = row.querySelector('.description');
-        if (statusCell) statusCell.textContent = service.status;
-        if (descCell) descCell.textContent = service.description;
-      }
-    });
-  } catch (error) {
-    console.error('Error fetching status:', error);
-  }
-}
-
-// Initial call and interval
-refreshStatus();
-setInterval(refreshStatus, 60000);
-</script>
-
+<td class="small source" data-label="Source">
+<td><a href="https://status.port.io/" rel="noopener" target="_blank">Port</a>
+</td>
+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
 </body>
 </html>
