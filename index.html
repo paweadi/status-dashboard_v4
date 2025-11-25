@@ -1,310 +1,153 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Status Dashboard</title>
-<meta content="60" http-equiv="refresh"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Status Dashboard – Markel Services</title>
 <style>
-    :root{
-      --bg:#0b1220; --panel:#111827; --panel-soft:#0f172a;
-      --text:#e5e7eb; --muted:#9ca3af; --line:#1f2937;
-      --blue:#60a5fa;
-    }
-    *{box-sizing:border-box}
-    body{margin:0; background:var(--bg); color:var(--text);
-         font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
-    header{padding:14px 0; border-bottom:1px solid var(--line);
-           background:linear-gradient(180deg,#0b1220,rgba(11,18,32,.92));}
-    .wrap{max-width:1100px; margin:0 auto; padding:0 18px;}
-    h1{margin:0; font-size:20px; font-weight:650; letter-spacing:.2px;}
-    .meta{color:var(--muted); font-size:12px; margin-top:4px;}
-    .row{display:flex; justify-content:space-between; align-items:center; gap:16px;}
-    .actions{display:flex; gap:10px; flex-wrap:wrap;}
-    .btn{background:#0f172a; color:var(--text); border:1px solid var(--line);
-         padding:6px 10px; border-radius:8px; font-size:12px; text-decoration:none;}
-    .btn:hover{border-color:#334155; background:#0d1426;}
-    main{padding:18px 0 28px;}
-    .card{background:linear-gradient(180deg,var(--panel),var(--panel-soft));
-          border:1px solid var(--line); border-radius:12px; overflow:hidden;
-          box-shadow:0 10px 30px rgba(0,0,0,.25);}
-    table{width:100%; border-collapse:collapse;}
-    thead th{font-size:12px; color:var(--muted); font-weight:600;
-             text-transform:uppercase; letter-spacing:.6px;
-             padding:12px 14px; border-bottom:1px solid var(--line);
-             background:rgba(255,255,255,.02); text-align:left;}
-    tbody td{padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:middle;}
-    tbody tr:hover{background:rgba(255,255,255,.03);}
-    .name{font-weight:600; color:#e8eaed;}
-    .badge{display:inline-block; padding:2px 10px; border-radius:999px;
-           color:#fff; font-size:12px; font-weight:700;}
-    .desc{color:#d1d5db;}
-    .small{color:var(--muted); font-size:12px;}
-    .err{color:#fca5a5; font-size:12px; margin-top:6px;}
-    a.link{color:var(--blue); text-decoration:none;}
-    a.link:hover{text-decoration:underline;}
-    /* Responsive stack for narrow screens */
-    @media (max-width:720px){
-      thead{display:none;}
-      tbody tr{display:block;}
-      tbody td{display:flex; justify-content:space-between; gap:12px;}
-      tbody td::before{content:attr(data-label); color:var(--muted); font-size:12px;}
-    }
-  </style>
-
-<style>
-body { background:#0f172a; color:#e2e8f0; font-family: system-ui, sans-serif; margin:0; }
-.container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
-h1 { font-size: 1.6rem; margin: 0 0 .25rem 0; }
-.meta { color:#94a3b8; margin-bottom: 1rem; }
-table { width:100%; border-collapse: collapse; background:#111827; border-radius:12px; overflow:hidden; table-layout: fixed; }
-th, td { padding: .9rem; border-bottom: 1px solid #1f2937; vertical-align: top; word-wrap: break-word; overflow-wrap: break-word; }
-th { text-align:left; color:#93c5fd; background:#0b1220; position: sticky; top:0; }
-tr:last-child td { border-bottom:none; }
-.badge { display:inline-block; padding:.2rem .6rem; border-radius:999px; font-size:.85rem; font-weight:600; }
-.Operational { background:#0f766e; color:#e6fffb; }
-.Minor { background:#b45309; color:#fff7ed; }
-.Major, .Critical { background:#b91c1c; color:#fee2e2; }
-.Unknown { background:#475569; color:#e2e8f0; }
-a { color:#93c5fd; text-decoration:none; word-break: break-all; }
-a:hover { text-decoration:underline; }
-.error { color:#fca5a5; font-size:.9rem; }
+  body { background:#0f172a; color:#e2e8f0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif; margin:0; }
+  .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+  h1 { font-size: 1.6rem; margin: 0 0 .25rem 0; }
+  .meta { color:#94a3b8; margin-bottom: 1rem; }
+  table { width:100%; border-collapse: collapse; background:#111827; border-radius:12px; overflow:hidden; table-layout: fixed; }
+  th, td { padding: .9rem; border-bottom: 1px solid #1f2937; vertical-align: top; word-wrap: break-word; overflow-wrap: break-word; }
+  th { text-align:left; color:#93c5fd; background:#0b1220; position: sticky; top:0; }
+  tr:last-child td { border-bottom:none; }
+  .badge { display:inline-block; padding:.2rem .6rem; border-radius:999px; font-size:.85rem; font-weight:600; }
+  .Operational { background:#16a34a; color:#ffffff; }
+  .Minor { background:#b45309; color:#fff7ed; }
+  .Major, .Critical { background:#b91c1c; color:#fee2e2; }
+  .Unknown { background:#64748b; color:#e2e8f0; }
+  a { color:#93c5fd; text-decoration:none; word-break: break-all; }
+  a:hover { text-decoration:underline; }
+  .error { color:#fca5a5; font-size:.9rem; }
 </style>
 </head>
 <body>
-<header>
-<div class="wrap">
-<div class="row">
-<div>
-<h1>Markel Services</h1>
-<div class="meta">Auto-refresh: 60s • Last updated: 2025-11-20 10:57:08</div>
-</div>
-<div class="actions">
-</div>
-</div>
-</div>
-</header>
-<main>
-<div class="wrap">
-<div class="card">
-<table aria-label="Service status table">
-<thead>
-<tr>
-<th style="width:26%;">Service</th>
-<th style="width:14%;">Status</th>
-<th>Description</th>
-<th><th>Source</th></th>
-</tr>
-</thead>
-<tbody>
-<tr id="Azure">
-<td class="name" data-label="Service">Azure</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                Azure Status
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://azure.status.microsoft/en-us/status" rel="noopener" target="_blank">Azure</a>
-</td>
-</td></tr>
-<tr id="Azure_DevOps">
-<td class="name" data-label="Service">Azure DevOps</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                Everything is looking good
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.dev.azure.com/" rel="noopener" target="_blank">Azure DevOps</a>
-</td>
-</td></tr>
-<tr id="Azure_Databricks">
-<td class="name" data-label="Service">Azure Databricks</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.azuredatabricks.net/" rel="noopener" target="_blank">Azure Databricks</a>
-</td>
-</td></tr>
-<tr id="JFrog">
-<td class="name" data-label="Service">JFrog</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.jfrog.io/" rel="noopener" target="_blank">JFrog</a>
-</td>
-</td></tr>
-<tr id="Elastic">
-<td class="name" data-label="Service">Elastic</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.elastic.co/" rel="noopener" target="_blank">Elastic</a>
-</td>
-</td></tr>
-<tr id="Octopus_Deploy">
-<td class="name" data-label="Service">Octopus Deploy</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.octopus.com/" rel="noopener" target="_blank">Octopus Deploy</a>
-</td>
-</td></tr>
-<tr id="Lucid">
-<td class="name" data-label="Service">Lucid</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.lucid.co/" rel="noopener" target="_blank">Lucid</a>
-</td>
-</td></tr>
-<tr id="Jira">
-<td class="name" data-label="Service">Jira</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://jira-software.status.atlassian.com/" rel="noopener" target="_blank">Jira</a>
-</td>
-</td></tr>
-<tr id="Confluence">
-<td class="name" data-label="Service">Confluence</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://confluence.status.atlassian.com/" rel="noopener" target="_blank">Confluence</a>
-</td>
-</td></tr>
-<tr id="GitHub">
-<td class="name" data-label="Service">GitHub</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://www.githubstatus.com/" rel="noopener" target="_blank">GitHub</a>
-</td>
-</td></tr>
-<tr id="CucumberStudio">
-<td class="name" data-label="Service">CucumberStudio</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-    
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.cucumberstudio.com/" rel="noopener" target="_blank">CucumberStudio</a>
-</td>
-</td></tr>
-<tr id="Fivetran">
-<td class="name" data-label="Service">Fivetran</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.fivetran.com/" rel="noopener" target="_blank">Fivetran</a>
-</td>
-</td></tr>
-<tr id="Brainboard">
-<td class="name" data-label="Service">Brainboard</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #f59e0b;">Minor</span>
-</td>
-<td class="desc description" data-label="Description">
-                Maintenance
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.brainboard.co/" rel="noopener" target="_blank">Brainboard</a>
-</td>
-</td></tr>
-<tr id="Port">
-<td class="name" data-label="Service">Port</td>
-<td class="status" data-label="Status">
-<span class="badge" style="background: #16a34a;">Operational</span>
-</td>
-<td class="desc description" data-label="Description">
-                All systems operational
-                
-              </td>
-<td class="small source" data-label="Source">
-<td><a href="https://status.port.io/" rel="noopener" target="_blank">Port</a>
-</td>
-</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</main>
-<p class="error" id="error" style="display:none;"></p>
+  <div class="container">
+    <h1>Markel Services</h1>
+    <div class="meta">
+      Auto-refresh: <span id="refresh-interval">60s</span> • Last updated: <span id="last-updated">—</span>
+    </div>
+
+    <table aria-label="Service status">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Status</th>
+          <th>Description</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="Azure">
+          <td>Azure</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">Azure Status</td>
+          <td><a href="https://azure.status.microsoft/en-us/status" target="_blank" rel="noopener">Azure</a></td>
+        </tr>
+        <tr id="Azure_DevOps">
+          <td>Azure DevOps</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">Everything is looking good</td>
+          <td><a href="https://status.dev.azure.com/" target="_blank" rel="noopener">Azure DevOps</a></td>
+        </tr>
+        <tr id="Azure_Databricks">
+          <td>Azure Databricks</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://status.azuredatabricks.net/" target="_blank" rel="noopener">Azure Databricks</a></td>
+        </tr>
+        <tr id="JFrog">
+          <td>JFrog</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://status.jfrog.io/" target="_blank" rel="noopener">JFrog</a></td>
+        </tr>
+        <tr id="Elastic">
+          <td>Elastic</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://status.elastic.co/" target="_blank" rel="noopener">Elastic</a></td>
+        </tr>
+        <tr id="Octopus_Deploy">
+          <td>Octopus Deploy</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://status.octopus.com/" target="_blank" rel="noopener">Octopus Deploy</a></td>
+        </tr>
+        <tr id="Lucid">
+          <td>Lucid</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://status.lucid.co/" target="_blank" rel="noopener">Lucid</a></td>
+        </tr>
+        <tr id="Jira">
+          <td>Jira</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://jira-software.status.atlassian.com/" target="_blank" rel="noopener">Jira</a></td>
+        </tr>
+        <tr id="Confluence">
+          <td>Confluence</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://confluence.status.atlassian.com/" target="_blank" rel="noopener">Confluence</a></td>
+        </tr>
+        <tr id="GitHub">
+          <td>GitHub</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://www.githubstatus.com/" target="_blank" rel="noopener">GitHub</a></td>
+        </tr>
+        <tr id="CucumberStudio">
+          <td>CucumberStudio</td>
+          <td class="status"><span class="badge Unknown">Unknown</span></td>
+          <td class="description">SSL error: cannot fetch status</td>
+          <td><a href="https://status.cucumberstudio.com/" target="_blank" rel="noopener">CucumberStudio</a></td>
+        </tr>
+        <tr id="Fivetran">
+          <td>Fivetran</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://status.fivetran.com/" target="_blank" rel="noopener">Fivetran</a></td>
+        </tr>
+        <tr id="Brainboard">
+          <td>Brainboard</td>
+          <td class="status"><span class="badge Minor">Minor</span></td>
+          <td class="description">Maintenance</td>
+          <td><a href="https://status.brainboard.co/" target="_blank" rel="noopener">Brainboard</a></td>
+        </tr>
+        <tr id="Port">
+          <td>Port</td>
+          <td class="status"><span class="badge Operational">Operational</span></td>
+          <td class="description">All systems operational</td>
+          <td><a href="https://status.port.io/" target="_blank" rel="noopener">Port</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p id="error" class="error" style="display:none;"></p>
+  </div>
+
 <script>
-const STATUS_JSON_URL = 'status.json';
-const REFRESH_MS = 60000;
+const REFRESH_MS = 60000; // 60s
+const STATUS_JSON_URL = () => `status.json?v=${Date.now()}`; // cache-busting
 
 function formatDate(dt) {
   const pad = (n) => String(n).padStart(2, '0');
   return `${dt.getFullYear()}-${pad(dt.getMonth()+1)}-${pad(dt.getDate())} ${pad(dt.getHours())}:${pad(dt.getMinutes())}:${pad(dt.getSeconds())}`;
 }
-
 function setLastUpdated(now = new Date()) {
-  document.getElementById('last-updated').textContent = formatDate(now);
+  const el = document.getElementById('last-updated');
+  if (el) el.textContent = formatDate(now);
 }
-
 function setError(msg) {
   const el = document.getElementById('error');
-  el.textContent = msg;
+  if (!el) return;
+  el.textContent = msg || '';
   el.style.display = msg ? 'block' : 'none';
 }
-
 function applyStatusToRow(row, statusText, descriptionText) {
   const statusCell = row.querySelector('.status');
   const descCell = row.querySelector('.description');
@@ -317,33 +160,37 @@ function applyStatusToRow(row, statusText, descriptionText) {
       statusCell.innerHTML = '';
       statusCell.appendChild(badge);
     }
-    badge.className = 'badge ' + (statusText || 'Unknown');
-    badge.textContent = statusText || 'Unknown';
+    const normalized = (statusText || 'Unknown').trim();
+    badge.className = 'badge ' + normalized; // color via class
+    badge.textContent = normalized;
   }
 }
-
 async function refreshStatus() {
   setError('');
   try {
-    const resp = await fetch(STATUS_JSON_URL, { cache: 'no-store' });
+    const resp = await fetch(STATUS_JSON_URL(), { cache: 'no-store' });
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const data = await resp.json();
     const items = Array.isArray(data.services) ? data.services : [];
     items.forEach(svc => {
-      const id = (svc.name || '').replace(/\s+/g, '_').replace(/[\/]/g, '_');
+      const id = (svc.name || '').replace(/\s+/g, '_').replace(/[\\/]/g, '_');
       const row = document.getElementById(id);
       if (row) applyStatusToRow(row, svc.status, svc.description);
     });
     setLastUpdated(new Date());
   } catch (err) {
     console.error('Error fetching status:', err);
-    setError('Error fetching status.json. Retrying...');
+    setError('Error fetching status.json. Will retry automatically.');
   }
 }
 
+// Start
 setLastUpdated(new Date());
 refreshStatus();
 setInterval(refreshStatus, REFRESH_MS);
+
+// Optional fallback: hard reload every 10 minutes to bust any remaining cache
+setInterval(() => { location.reload(); }, 10 * 60 * 1000);
 </script>
 </body>
 </html>
