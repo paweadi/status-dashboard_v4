@@ -56,7 +56,7 @@ for svc in services:
         if name == "CucumberStudio":
             status = "Operational"
             description = "SSL error: fallback to Operational"
-     updated_services.append({"name": name, "status": status, "description": description})
+    updated_services.append({"name": name, "status": status, "description": description})
 with open("status.json", "w", encoding="utf-8") as f:
     json.dump({"services": updated_services}, f, indent=4)
 print("Updated status.json with", len(updated_services), "services.")
