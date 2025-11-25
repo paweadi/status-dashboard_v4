@@ -63,8 +63,8 @@
         },
         {
             "name": "Brainboard",
-            "status": "Minor",
-            "description": "Maintenance"
+            "status": "Operational",
+            "description": "All systems operational"
         },
         {
             "name": "Port",
