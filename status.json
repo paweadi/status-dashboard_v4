@@ -1,3 +1,4 @@
+
 {
     "services": [
         {
@@ -52,8 +53,8 @@
         },
         {
             "name": "CucumberStudio",
-            "status": "Operational",
-            "description": "All systems operational"
+            "status": "Unknown",
+            "description": "SSL error: cannot fetch status"
         },
         {
             "name": "Fivetran",
