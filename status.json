@@ -1,0 +1,74 @@
+{
+    "services": [
+        {
+            "name": "Azure",
+            "status": "Operational",
+            "description": "Azure Status"
+        },
+        {
+            "name": "Azure DevOps",
+            "status": "Operational",
+            "description": "Everything is looking good"
+        },
+        {
+            "name": "Azure Databricks",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "JFrog",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "Elastic",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "Octopus Deploy",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "Lucid",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "Jira",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "Confluence",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "GitHub",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "CucumberStudio",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "Fivetran",
+            "status": "Operational",
+            "description": "All systems operational"
+        },
+        {
+            "name": "Brainboard",
+            "status": "Minor",
+            "description": "Maintenance"
+        },
+        {
+            "name": "Port",
+            "status": "Operational",
+            "description": "All systems operational"
+        }
+    ]
+}
