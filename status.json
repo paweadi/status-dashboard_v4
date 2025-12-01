@@ -22,13 +22,13 @@
         },
         {
             "name": "Elastic",
-            "status": "Unknown",
-            "description": "Fetch error: HTTPSConnectionPool(host='status.elastic.co', port=443): Read timed out. (read timeout=10)"
+            "status": "Operational",
+            "description": "ESS (Public) Status x Get email notifications whenever ESS (Public) creates , updates or resolves an incident. Email address: Enter OTP: Resend OTP in: seconds Didn't receive the OTP? Resend OTP By su..."
         },
         {
             "name": "Octopus Deploy",
-            "status": "Operational",
-            "description": "Octopus Deploy Status x Get email notifications whenever Octopus Deploy creates , updates or resolves an incident. Email address: Enter OTP: Resend OTP in: seconds Didn't receive the OTP? Resend OTP B..."
+            "status": "Unknown",
+            "description": "Fetch error: HTTPSConnectionPool(host='status.octopus.com', port=443): Read timed out. (read timeout=10)"
         },
         {
             "name": "Lucid",
