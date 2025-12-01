@@ -3,7 +3,7 @@ name: Auto Update Service Status
 
 on:
   schedule:
-    - cron: "*/10 * * * *" # Runs every 10 minutes
+    - cron: "0 0 * * *" # Runs at 12am
   workflow_dispatch: # Allow manual trigger
 
 jobs:
