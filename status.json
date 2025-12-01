@@ -17,8 +17,8 @@
         },
         {
             "name": "JFrog",
-            "status": "Unknown",
-            "description": "Fetch error: HTTPSConnectionPool(host='status.jfrog.io', port=443): Read timed out. (read timeout=10)"
+            "status": "Operational",
+            "description": "JFrog Cloud Status Contact Support Choose Region AMER EMEA APAC x Get email notifications whenever JFrog Cloud creates , updates or resolves an incident. Email address: Enter OTP: Resend OTP in: secon..."
         },
         {
             "name": "Elastic",
