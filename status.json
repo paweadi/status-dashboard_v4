@@ -22,8 +22,8 @@
         },
         {
             "name": "Elastic",
-            "status": "Unknown",
-            "description": "Fetch error: Response ended prematurely"
+            "status": "Operational",
+            "description": "ESS (Public) Status x Get email notifications whenever ESS (Public) creates , updates or resolves an incident. Email address: Enter OTP: Resend OTP in: seconds Didn't receive the OTP? Resend OTP By su..."
         },
         {
             "name": "Octopus Deploy",
@@ -57,8 +57,8 @@
         },
         {
             "name": "Fivetran",
-            "status": "Operational",
-            "description": "Fivetran Status \u2190 Incident History x Get email notifications whenever Fivetran creates , updates or resolves an incident. Email address: Enter OTP: Resend OTP in: seconds Didn't receive the OTP? Resen..."
+            "status": "Unknown",
+            "description": "Fetch error: HTTPSConnectionPool(host='status.fivetran.com', port=443): Read timed out. (read timeout=10)"
         },
         {
             "name": "Brainboard",
