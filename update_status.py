@@ -46,7 +46,7 @@ try:
             status = normalize_status(data['status']['indicator'])
             description = data['status']['description']
             updated_services.append({'name': name, 'status': status, 'description': description})
-            continue
+        continue
     if name == 'Brainboard':
         api_url = 'https://status.brainboard.co/api/v2/status.json'
         api_resp = requests.get(api_url, timeout=10)
@@ -55,7 +55,7 @@ try:
             status = normalize_status(data['status']['indicator'])
             description = data['status']['description']
             updated_services.append({'name': name, 'status': status, 'description': description})
-            continue
+        continue
     # Original scraping logic
     resp = requests.get(url, timeout=10, verify=False)
     if resp.status_code == 200:
@@ -72,11 +72,11 @@ try:
                 description = full_text
                 break
         resp = requests.get(url, timeout=10, verify=False)
-        if resp.status_code == 200:
-            soup = BeautifulSoup(resp.text, "html.parser")
-            text_candidates = [tag.get_text(strip=True) for tag in soup.find_all(["span", "div", "p"]) if tag.get_text(strip=True)]
-            for txt in text_candidates:
-                if any(word in txt.lower() for word in ["operational", "minor", "major", "degraded", "outage"]):
+    if resp.status_code == 200:
+        soup = BeautifulSoup(resp.text, "html.parser")
+        text_candidates = [tag.get_text(strip=True) for tag in soup.find_all(["span", "div", "p"]) if tag.get_text(strip=True)]
+        for txt in text_candidates:
+            if any(word in txt.lower() for word in ["operational", "minor", "major", "degraded", "outage"]):
                     status = normalize_status(txt)
             # Use full page text for description
             full_text = soup.get_text(separator=' ', strip=True)
@@ -86,17 +86,17 @@ try:
                 full_text = full_text[:200] + '...'
             description = full_text
             break
-    except requests.exceptions.SSLError as e:
+except requests.exceptions.SSLError as e:
         # ✅ SSL-specific fallback
         status = "Operational"
         description = f"SSL error: fallback to Operational ({str(e)})"
-    except Exception as e:
+except Exception as e:
         description = f"Fetch error: {str(e)}"
         # Optional: fallback for specific services
         if name == "CucumberStudio":
             status = "Operational"
             description = "SSL error: fallback to Operational"
-    updated_services.append({"name": name, "status": status, "description": description})
+updated_services.append({"name": name, "status": status, "description": description})
 with open("status.json", "w", encoding="utf-8") as f:
     json.dump({"services": updated_services}, f, indent=4)
 print("Updated status.json with", len(updated_services), "services.")
