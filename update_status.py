@@ -51,7 +51,7 @@ for svc in services:
             if len(full_text) > 200:
                 full_text = full_text[:200] + '...'
             description = full_text
-                    break
+            break
     except requests.exceptions.SSLError as e:
         # ✅ SSL-specific fallback
         status = "Operational"
