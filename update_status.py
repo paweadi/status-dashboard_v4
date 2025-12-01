@@ -44,12 +44,13 @@ for svc in services:
             for txt in text_candidates:
                 if any(word in txt.lower() for word in ["operational", "minor", "major", "degraded", "outage"]):
                     status = normalize_status(txt)
-            description = txt
-            # Cleanup description
-            description = description.replace('SUBSCRIBE', '')
-            description = ' '.join(description.split())  # normalize spaces
-            if len(description) > 200:
-                description = description[:200] + '...'
+            # Use full page text for description
+            full_text = soup.get_text(separator=' ', strip=True)
+            full_text = full_text.replace('SUBSCRIBE', '')
+            full_text = ' '.join(full_text.split())  # normalize spaces
+            if len(full_text) > 200:
+                full_text = full_text[:200] + '...'
+            description = full_text
                     break
     except requests.exceptions.SSLError as e:
         # ✅ SSL-specific fallback
