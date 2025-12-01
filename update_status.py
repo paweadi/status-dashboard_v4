@@ -44,7 +44,12 @@ for svc in services:
             for txt in text_candidates:
                 if any(word in txt.lower() for word in ["operational", "minor", "major", "degraded", "outage"]):
                     status = normalize_status(txt)
-                    description = txt
+            description = txt
+            # Cleanup description
+            description = description.replace('SUBSCRIBE', '')
+            description = ' '.join(description.split())  # normalize spaces
+            if len(description) > 200:
+                description = description[:200] + '...'
                     break
     except requests.exceptions.SSLError as e:
         # ✅ SSL-specific fallback
