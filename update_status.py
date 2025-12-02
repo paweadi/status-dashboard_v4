@@ -37,7 +37,7 @@ def map_indicator(indicator):
         return "Minor"
     elif indicator in ["major", "critical", "outage"]:
         return "Major"
-    return "Operational"  # fallback
+    return "Operational"
 
 def sanitize_description(desc, indicator):
     if not desc:
