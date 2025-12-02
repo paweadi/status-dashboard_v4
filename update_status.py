@@ -1,4 +1,3 @@
-
 import json
 import requests
 from bs4 import BeautifulSoup
@@ -70,7 +69,7 @@ for svc in services:
             updated_services.append({'name': name, 'status': status, 'description': description})
             continue
 
-        # HTML scraping for other services
+        # HTML scraping for other services (short description only)
         resp = requests.get(url, timeout=10, verify=False)
         if resp.status_code == 200:
             soup = BeautifulSoup(resp.text, 'html.parser')
@@ -78,7 +77,7 @@ for svc in services:
             for txt in text_candidates:
                 if any(word in txt.lower() for word in ['operational', 'minor', 'major', 'degraded', 'outage']):
                     status = normalize_status(txt)
-                    description = txt  # short description
+                    description = txt  # ✅ Only short phrase
                     break
             if status == "Unknown":
                 status = "Operational"
@@ -92,4 +91,4 @@ for svc in services:
 with open("status.json", "w", encoding="utf-8") as f:
     json.dump({"services": updated_services}, f, indent=4)
 
-print("✅ Updated status.json with patched logic for CucumberStudio & Brainboard and cleaned scraping.")
+print("✅ Updated status.json with short descriptions for all services and API logic for CucumberStudio & Brainboard.")
